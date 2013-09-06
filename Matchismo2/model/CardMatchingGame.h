@@ -10,6 +10,4 @@
 
 @interface CardMatchingGame : CardGame
 
-@property (readonly, nonatomic, strong) NSString *lastFlipResultString;
-
 @end

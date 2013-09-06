@@ -16,7 +16,7 @@
                                 <color key="backgroundColor" red="0.45593510841836737" green="0.049125593824222977" blue="0.027256994084067336" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="375" id="lNF-p4-8eO"/>
+                                    <constraint firstAttribute="height" constant="279" id="dHK-BA-7wK"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5Gj-Hk-3Da">
                                     <size key="itemSize" width="65" height="91"/>
@@ -79,23 +79,136 @@
                                     <action selector="deal:" destination="2" eventType="touchUpInside" id="ULZ-zF-cTu"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Selecting" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rfQ-4Z-S7Z">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="HsI-EU-f1v"/>
+                                    <constraint firstAttribute="height" constant="21" id="oMA-fZ-bWa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bdJ-gT-94n">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="73" id="4ai-OM-9TZ"/>
+                                    <constraint firstAttribute="width" constant="108" id="7A9-Cl-foh"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="C9H-vu-F8b">
+                                    <size key="itemSize" width="45" height="66"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Card" id="v0c-9s-DYF" customClass="SelectedMatchingCardCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="66"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="45" height="66"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FgR-E7-8C5" customClass="MatchingCardView">
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="FgR-E7-8C5" firstAttribute="bottom" secondItem="v0c-9s-DYF" secondAttribute="bottom" type="default" id="BKy-Xd-rIq"/>
+                                            <constraint firstItem="FgR-E7-8C5" firstAttribute="trailing" secondItem="v0c-9s-DYF" secondAttribute="trailing" type="default" id="LMs-qm-WUm"/>
+                                            <constraint firstItem="FgR-E7-8C5" firstAttribute="leading" secondItem="v0c-9s-DYF" secondAttribute="leading" type="default" id="MRX-aD-3bx"/>
+                                            <constraint firstItem="FgR-E7-8C5" firstAttribute="top" secondItem="v0c-9s-DYF" secondAttribute="top" type="default" id="URu-L5-4vZ"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="selectedMatchingCardView" destination="FgR-E7-8C5" id="R5y-ek-7cp"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="2" id="qF3-es-7J1"/>
+                                </connections>
+                            </collectionView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="178" translatesAutoresizingMaskIntoConstraints="NO" id="ehu-V3-s59">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="178" id="Mck-Dq-xJo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iiP-yZ-TlU">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="164" id="NsL-ea-Hhs"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="13T-3V-Kcg">
+                                    <size key="itemSize" width="45" height="66"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Card" id="HgG-km-t6s" customClass="MatchedMatchingCardCollectionViewCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="66"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="45" height="66"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xsu-pK-SBE" customClass="MatchingCardView">
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="xsu-pK-SBE" firstAttribute="bottom" secondItem="HgG-km-t6s" secondAttribute="bottom" type="default" id="6ZS-tt-hs8"/>
+                                            <constraint firstItem="xsu-pK-SBE" firstAttribute="trailing" secondItem="HgG-km-t6s" secondAttribute="trailing" type="default" id="7tN-In-GeL"/>
+                                            <constraint firstItem="xsu-pK-SBE" firstAttribute="top" secondItem="HgG-km-t6s" secondAttribute="top" type="default" id="nN4-fY-tHp"/>
+                                            <constraint firstItem="xsu-pK-SBE" firstAttribute="leading" secondItem="HgG-km-t6s" secondAttribute="leading" type="default" id="pYa-fc-rlo"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="matchedMatchingCardView" destination="xsu-pK-SBE" id="iNG-qs-49k"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="2" id="nvp-d8-MQq"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.29719387755102045" green="0.032839006583574026" blue="0.019933931460848014" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="sH1-Ax-rLV" secondAttribute="trailing" constant="27" id="1G3-ab-SNf"/>
                             <constraint firstItem="RhJ-eA-OaD" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="7Vl-pq-Uhy"/>
+                            <constraint firstItem="ehu-V3-s59" firstAttribute="top" secondItem="rfQ-4Z-S7Z" secondAttribute="top" type="default" id="D1Q-eM-2q5"/>
                             <constraint firstItem="RhJ-eA-OaD" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="DKB-6u-Fia"/>
+                            <constraint firstItem="bdJ-gT-94n" firstAttribute="top" secondItem="iiP-yZ-TlU" secondAttribute="top" type="default" id="KeR-SH-UxD"/>
+                            <constraint firstAttribute="bottom" secondItem="bdJ-gT-94n" secondAttribute="bottom" constant="27" id="RoA-5Z-TlH"/>
+                            <constraint firstAttribute="bottom" secondItem="rfQ-4Z-S7Z" secondAttribute="bottom" constant="110" id="WQS-uV-XEr"/>
+                            <constraint firstItem="bdJ-gT-94n" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="10" id="WaU-vr-rWc"/>
+                            <constraint firstItem="rfQ-4Z-S7Z" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="38" id="a6Q-a8-ELM"/>
                             <constraint firstItem="RhJ-eA-OaD" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="bTX-YQ-zXP"/>
-                            <constraint firstItem="7Od-TT-H22" firstAttribute="top" secondItem="3" secondAttribute="top" constant="372" id="eNW-S0-SA0"/>
+                            <constraint firstItem="iiP-yZ-TlU" firstAttribute="bottom" secondItem="bdJ-gT-94n" secondAttribute="bottom" type="default" id="eOq-5z-KDu"/>
+                            <constraint firstItem="iiP-yZ-TlU" firstAttribute="leading" secondItem="ehu-V3-s59" secondAttribute="leading" type="default" id="eoM-gN-EBx"/>
+                            <constraint firstAttribute="bottom" secondItem="sH1-Ax-rLV" secondAttribute="bottom" constant="6" id="hQ5-k7-2lH"/>
                             <constraint firstItem="RhJ-eA-OaD" firstAttribute="centerX" secondItem="7Od-TT-H22" secondAttribute="centerX" type="default" id="nNU-Q4-j66"/>
-                            <constraint firstAttribute="trailing" secondItem="sH1-Ax-rLV" secondAttribute="trailing" constant="27" id="nrA-Lt-BD5"/>
-                            <constraint firstItem="sH1-Ax-rLV" firstAttribute="top" secondItem="RhJ-eA-OaD" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="wwB-rn-9u4"/>
+                            <constraint firstItem="7Od-TT-H22" firstAttribute="top" secondItem="3" secondAttribute="top" constant="372" id="nZh-ZY-GBF"/>
+                            <constraint firstAttribute="trailing" secondItem="iiP-yZ-TlU" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="s50-o0-wyd"/>
+                            <constraint firstItem="ehu-V3-s59" firstAttribute="baseline" secondItem="rfQ-4Z-S7Z" secondAttribute="baseline" type="default" id="tox-SX-LKB"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Match" image="matchIcon.png" id="DWk-TZ-md3"/>
                     <connections>
                         <outlet property="cardCollectionView" destination="RhJ-eA-OaD" id="ogh-SO-Q8i"/>
+                        <outlet property="matchedCardCollectionView" destination="iiP-yZ-TlU" id="rKv-IT-wdB"/>
+                        <outlet property="matchedLabel" destination="ehu-V3-s59" id="qCj-k1-zAs"/>
                         <outlet property="scoreLabel" destination="7Od-TT-H22" id="aBL-Xp-qbd"/>
+                        <outlet property="selectedCardCollectionView" destination="bdJ-gT-94n" id="dtZ-eI-dV1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -265,56 +378,6 @@
         <image name="rank.png" width="30" height="30"/>
         <image name="setIcon.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="CardgameViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CardgameViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="deal:"/>
-                <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
-                <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="GameResultViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameResultViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="display" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="displaySet" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="MatchingCardCollectionViewCell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MatchingCardCollectionViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="matchingCardView" candidateClass="MatchingCardView"/>
-            </relationships>
-        </class>
-        <class className="MatchingCardView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MatchingCardView.h"/>
-        </class>
-        <class className="MatchingCardgameViewController" superclassName="CardgameViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MatchingCardgameViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SettingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="resetRanking:"/>
-            </relationships>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

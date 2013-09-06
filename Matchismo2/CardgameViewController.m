@@ -18,6 +18,14 @@
 @property (strong, nonatomic) GameResult *gameResult;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *selectedCardCollectionView;
+@property (weak, nonatomic) IBOutlet UICollectionView *matchedCardCollectionView;
+@property (strong, nonatomic) NSMutableArray *cardsSelected;
+@property (strong, nonatomic) NSMutableArray *cardsMatched; //also use for mismatched
+@property (strong, nonatomic) NSMutableArray *cardsQueue;
+@property (nonatomic) int numCardsSelected;
+@property (nonatomic) int numCardsMatched;
+@property (weak, nonatomic) IBOutlet UILabel *matchedLabel;
 
 @end
 
@@ -34,6 +42,24 @@
 
 #pragma mark - Setters
 
+-(NSMutableArray *)cardsQueue
+{
+    if(!_cardsQueue)_cardsQueue = [[NSMutableArray alloc] init];
+    return _cardsQueue;
+}
+
+-(NSMutableArray *)cardsSelected
+{
+    if(!_cardsSelected)_cardsSelected = [[NSMutableArray alloc] init];
+    return _cardsSelected;
+}
+
+-(NSMutableArray *)cardsMatched
+{
+    if(!_cardsMatched)_cardsMatched = [[NSMutableArray alloc] init];
+    return _cardsMatched;
+}
+
 #pragma mark - Getters
 -(CardGame*)game
 {
@@ -47,6 +73,7 @@
     return _gameResult;
 }
 
+
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -55,15 +82,95 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.startingCardCount;
+    if([collectionView isEqual:self.cardCollectionView])
+        return self.startingCardCount;
+    else if([collectionView isEqual:self.selectedCardCollectionView])
+    {
+        return self.numCardsSelected;
+    }
+    else if([collectionView isEqual:self.matchedCardCollectionView])
+    {
+        if([self.cardsMatched count] == self.numOfCardToMatch)
+            return self.numCardsMatched;
+        else
+            return 0;
+    }
+    else
+        return 0;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Card" forIndexPath:indexPath];
-    Card *card = [self.game cardAtIndex:indexPath.item];
-    [self updateCell:cell usingCard:card];
+    if([collectionView isEqual:self.cardCollectionView])
+    {
+        Card *card = [self.game cardAtIndex:indexPath.item];
+        [self updateCell:cell usingCard:card];
+    }
+    else if([collectionView isEqual:self.selectedCardCollectionView])
+    {
+        Card *card = self.cardsSelected[indexPath.item];
+        [self updateCell:cell usingCard:card];
+    }
+    else if([collectionView isEqual:self.matchedCardCollectionView])
+    {
+        Card *card = self.cardsMatched[indexPath.item];
+        [self updateCell:cell usingCard:card];
+    }
     return cell;
+}
+
+#pragma mark - Helpers
+//remove selected cards from the screen
+-(void) removeSelectedCards
+{
+    NSMutableArray *indexArray = [[NSMutableArray alloc] init];
+    for(int i = 0; i < self.numCardsSelected; i++)
+        [indexArray addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+    
+    [self.selectedCardCollectionView performBatchUpdates:^{
+        self.numCardsSelected = 0;
+        [self.selectedCardCollectionView deleteItemsAtIndexPaths:indexArray];
+    } completion:nil];
+}
+
+//remove matched cards from the screen
+-(void) removeMatchedCards
+{
+    NSMutableArray *indexArray = [[NSMutableArray alloc] init];
+    for(int i = 0; i < self.numCardsMatched; i++)
+        [indexArray addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+    
+    [self.matchedCardCollectionView performBatchUpdates:^{
+        self.numCardsMatched = 0;
+        [self.matchedCardCollectionView deleteItemsAtIndexPaths:indexArray];
+    } completion:nil];
+}
+
+//add selected cards onto the screen
+-(void) addCardsFromSelected
+{
+    NSMutableArray *indexArray = [[NSMutableArray alloc] init];
+    for(int i = 0; i < [self.cardsSelected count]; i++)
+        [indexArray addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+    
+    [self.selectedCardCollectionView performBatchUpdates:^{
+        self.numCardsSelected = [self.cardsSelected count];
+        [self.selectedCardCollectionView insertItemsAtIndexPaths:indexArray];
+    } completion:nil];
+}
+
+//add matched scards onto the screen
+-(void) addCardsFromMatched
+{
+    NSMutableArray *indexArray = [[NSMutableArray alloc] init];
+    for(int i = 0; i < [self.cardsMatched count]; i++)
+        [indexArray addObject:[NSIndexPath indexPathForItem:i inSection:0]];
+    
+    [self.matchedCardCollectionView performBatchUpdates:^{
+        self.numCardsMatched = [self.cardsMatched count];
+        [self.matchedCardCollectionView insertItemsAtIndexPaths:indexArray];
+    } completion:nil];
 }
 
 #pragma mark - Main functions
@@ -82,6 +189,14 @@
     self.gameResult = nil;
     self.game = nil;
     self.flipCount = 0;
+    
+    //remove cards from selected section
+    [self removeSelectedCards];
+    self.cardsSelected = nil;
+    
+    //remove cards from matched section
+    [self removeMatchedCards];
+    self.cardsMatched = nil;
     [self updateUI];
 }
 - (IBAction)flipCard:(UITapGestureRecognizer*)gesture
@@ -92,8 +207,59 @@
     {
         [self.game flipCardAtIndex:indexPath.item];
         self.flipCount++;
-        [self updateUI];
         self.gameResult.score = self.game.score;
+        
+        //Card that just flipped
+        Card* card = self.game.cards[indexPath.item];
+        
+        //if face up
+        if(card.isFaceUp)
+        {
+            //add card to queue but only add card to cardsSelected array when it is
+            //playable
+            [self.cardsQueue addObject:[self.game cardAtIndex:indexPath.item]];
+            if(!card.isUnplayable)
+                [self.cardsSelected addObject:[self.game cardAtIndex:indexPath.item]];
+        }
+        //else it is face down
+        else
+        {
+            //find and remove the card from the queue
+            for(int j = 0; j < [self.cardsQueue count]; j++)
+            {
+                if([[self.cardsQueue[j] contents] isEqualToString:card.contents])
+                {
+                    [self.cardsQueue removeObjectAtIndex:j];
+                }
+            }
+        }
+
+        //removes cards that have deselected by searching all the
+        //cards that are facing down or unplayable, from the cardsSelected array
+        for(int i = 0; i < [self.game.cards count];i++)
+        {
+            Card *tempCard = [self.game cardAtIndex:i];
+            if(!tempCard.isFaceUp || tempCard.isUnplayable)
+            {
+                for(int j = 0; j < [self.cardsSelected count]; j++)
+                {
+                    if([[self.cardsSelected[j] contents] isEqualToString:tempCard.contents])
+                    {
+                        [self.cardsSelected removeObjectAtIndex:j];
+                    }
+                }
+            }
+        }
+        
+        //if the queue has count equal to the number of card to match, the
+        //match/mismatch is found.
+        if([self.cardsQueue count] == self.numOfCardToMatch)
+        {
+            self.cardsMatched = [[NSMutableArray alloc] initWithArray:self.cardsQueue];
+            self.cardsQueue = [[NSMutableArray alloc] initWithArray:self.cardsSelected];
+        }
+
+        [self updateUI];
         
         //synchronize the game result data with different keys
         if([self.game isMemberOfClass:[CardMatchingGame class]])
@@ -110,11 +276,31 @@
 
 - (void)updateUI
 {
+    //update cards in the playing section of the screen
+    //add selected cards
     for (UICollectionViewCell *cell in [self.cardCollectionView visibleCells]) {
         NSIndexPath *indexPath = [self.cardCollectionView indexPathForCell:cell];
         Card *card = [self.game cardAtIndex:indexPath.item];
         [self updateCell:cell usingCard:card];
     }
+    //remove cards from the selected section of the screen
+    [self removeSelectedCards];
+    
+    //add cards into selected section
+    [self addCardsFromSelected];
+    
+    //update cards in matched/mismatched section of the screen
+    if([self.cardsMatched count] == self.numOfCardToMatch)
+    {
+        //remove matched/mismatched cards
+        [self removeMatchedCards];
+        
+        //add cards into matched/mismatched section
+        [self addCardsFromMatched];
+    }
+    
+    //update other labels
+    self.matchedLabel.text = self.game.lastFlipResultString;
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
 }
 

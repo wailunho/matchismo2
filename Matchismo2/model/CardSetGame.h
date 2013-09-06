@@ -10,7 +10,6 @@
 
 @interface CardSetGame : CardGame
 
-@property (nonatomic) int score;
 @property (readonly, nonatomic, strong) NSDictionary *lastFlipResultDictionary;
 
 @end

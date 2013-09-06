@@ -11,7 +11,6 @@
 #import "Deck.h"
 
 @interface CardSetGame()
-@property (strong, nonatomic) NSMutableArray *cards;
 @property (readwrite, nonatomic, strong) NSDictionary *lastFlipResultDictionary;
 @end
 

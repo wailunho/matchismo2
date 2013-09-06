@@ -14,9 +14,9 @@
 
 //all abstracts need to be overrided
 @property (readonly, nonatomic) NSUInteger startingCardCount; //abstract
+@property (readonly, nonatomic) NSUInteger numOfCardToMatch; //abstracts
 
 - (Deck *)createDeck; // abstract
 - (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card; // abstract
 -(void)synchronize:(GameResult*)gameResult; //abstract
-
 @end

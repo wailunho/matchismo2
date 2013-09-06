@@ -10,6 +10,8 @@
 #import "PlayingCardDeck.h"
 #import "CardMatchingGame.h"
 #import "MatchingCardCollectionViewCell.h"
+#import "SelectedMatchingCardCollectionViewCell.h"
+#import "MatchedMatchingCardCollectionViewCell.h"
 #import "MatchingGameResult.h"
 
 @interface MatchingCardgameViewController ()
@@ -38,19 +40,48 @@
 {
     return 22;
 }
+-(NSUInteger)numOfCardToMatch
+{
+    return 2;
+}
 
 -(void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card
 {
-    if ([cell isKindOfClass:[MatchingCardCollectionViewCell class]]) {
+    if ([cell isKindOfClass:[MatchingCardCollectionViewCell class]])
+    {
         MatchingCardView *matchingCardView = ((MatchingCardCollectionViewCell *)cell).matchingCardView;
-        if ([card isKindOfClass:[PlayingCard class]]) {
+        if ([card isKindOfClass:[PlayingCard class]])
+        {
             PlayingCard *playingCard = (PlayingCard *)card;
             matchingCardView.rank = playingCard.rank;
             matchingCardView.suit = playingCard.suit;
             matchingCardView.faceUp = playingCard.isFaceUp;
             matchingCardView.alpha = playingCard.isUnplayable ? ALPHA_UNPLAYABLE : ALPHA_PLAYABLE;
         }
-    }    
+    }
+    
+    else if([cell isKindOfClass:[SelectedMatchingCardCollectionViewCell class]])
+    {
+        if ([card isKindOfClass:[PlayingCard class]])
+        {
+            PlayingCard *playingCard = (PlayingCard *)card;
+            MatchingCardView *matchingCardView = ((SelectedMatchingCardCollectionViewCell *)cell).selectedMatchingCardView;
+            matchingCardView.rank = playingCard.rank;
+            matchingCardView.suit = playingCard.suit;
+            matchingCardView.faceUp = YES;
+        }
+    }
+    else if([cell isKindOfClass:[MatchedMatchingCardCollectionViewCell class]])
+    {
+        if ([card isKindOfClass:[PlayingCard class]])
+        {
+            PlayingCard *playingCard = (PlayingCard *)card;
+            MatchingCardView *matchingCardView = ((MatchedMatchingCardCollectionViewCell *)cell).matchedMatchingCardView;
+            matchingCardView.rank = playingCard.rank;
+            matchingCardView.suit = playingCard.suit;
+            matchingCardView.faceUp = YES;
+        }
+    }
 }
 
 -(void)synchronize:(GameResult *)gameResult

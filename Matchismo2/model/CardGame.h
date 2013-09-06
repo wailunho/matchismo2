@@ -13,6 +13,7 @@
 
 @property (nonatomic) int score;
 @property (strong, nonatomic) NSMutableArray *cards;
+@property (nonatomic, strong) NSString *lastFlipResultString;
 
 //designated initializer
 -(id)initWithCardCount:(NSUInteger)count

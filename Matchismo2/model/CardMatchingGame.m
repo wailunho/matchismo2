@@ -8,10 +8,6 @@
 
 #import "CardMatchingGame.h"
 
-@interface CardMatchingGame()
-@property (readwrite, nonatomic, strong) NSString *lastFlipResultString;
-@end
-
 @implementation CardMatchingGame
 
 //socre multplier for card matching game
@@ -44,26 +40,22 @@
                         card.unplayable = YES;
                         otherCard.unplayable = YES;
                         self.score += matchScore * MATCH_BONUS;
-                        self.lastFlipResultString = [NSString stringWithFormat:@"Matched %@ and %@ for %d points!", card.contents, otherCard.contents, matchScore * MATCH_BONUS];
+                        self.lastFlipResultString = [NSString stringWithFormat:@"Matched! +%d!", matchScore * MATCH_BONUS];
                     }
                     //they are not matched
                     else
                     {
                         otherCard.faceUp = NO;
                         self.score -= MISMATCH_PENALTY;
-                        self.lastFlipResultString = [NSString stringWithFormat:@"%@ and %@ don't match! 2 points penality!", card.contents, otherCard.contents];
+                        //self.lastFlipResultString = [NSString stringWithFormat:@"%@ and %@ don't match! 2 points penality!", card.contents, otherCard.contents];
+                        self.lastFlipResultString = [NSString stringWithFormat:@"Mismatched! -%d!", MISMATCH_PENALTY];
                     }
                     break;
                 }
-                //no other facing up card is found, we display a message to player indicate which card has flipped
-                else
-                    self.lastFlipResultString = [NSString stringWithFormat:@"Flipped up %@", card.contents];
             }
             //penality for each flip. Only when flipping it to face up.
             self.score -= FLIP_COST;
         }
-        else
-            self.lastFlipResultString = [NSString stringWithFormat:@"Flipped down %@", card.contents];
         //flip the face.
         card.faceUp = !card.isFaceUp;
     }

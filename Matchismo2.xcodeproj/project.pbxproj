@@ -65,6 +65,8 @@
 		3D03F6A317D42BCB00CF8E65 /* MatchingCardgameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D03F6A217D42BCB00CF8E65 /* MatchingCardgameViewController.m */; };
 		3D20CCBF17D50F1200521029 /* GameResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D20CCBE17D50F1200521029 /* GameResultViewController.m */; };
 		3D20CCC217D51E5C00521029 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D20CCC117D51E5B00521029 /* SettingViewController.m */; };
+		3D20CCC517D56C6500521029 /* SelectedMatchingCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D20CCC417D56C6500521029 /* SelectedMatchingCardCollectionViewCell.m */; };
+		3DBF4AD317D7D7D6008A8B70 /* MatchedMatchingCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DBF4AD217D7D7D6008A8B70 /* MatchedMatchingCardCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -148,6 +150,10 @@
 		3D20CCBE17D50F1200521029 /* GameResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameResultViewController.m; sourceTree = "<group>"; };
 		3D20CCC017D51E5B00521029 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		3D20CCC117D51E5B00521029 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		3D20CCC317D56C6500521029 /* SelectedMatchingCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedMatchingCardCollectionViewCell.h; sourceTree = "<group>"; };
+		3D20CCC417D56C6500521029 /* SelectedMatchingCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedMatchingCardCollectionViewCell.m; sourceTree = "<group>"; };
+		3DBF4AD117D7D7D6008A8B70 /* MatchedMatchingCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchedMatchingCardCollectionViewCell.h; sourceTree = "<group>"; };
+		3DBF4AD217D7D7D6008A8B70 /* MatchedMatchingCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchedMatchingCardCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +207,10 @@
 				3D03F6A217D42BCB00CF8E65 /* MatchingCardgameViewController.m */,
 				3D03F69E17D2B8AD00CF8E65 /* MatchingCardCollectionViewCell.h */,
 				3D03F69F17D2B8AD00CF8E65 /* MatchingCardCollectionViewCell.m */,
+				3D20CCC317D56C6500521029 /* SelectedMatchingCardCollectionViewCell.h */,
+				3D20CCC417D56C6500521029 /* SelectedMatchingCardCollectionViewCell.m */,
+				3DBF4AD117D7D7D6008A8B70 /* MatchedMatchingCardCollectionViewCell.h */,
+				3DBF4AD217D7D7D6008A8B70 /* MatchedMatchingCardCollectionViewCell.m */,
 				3D20CCBD17D50F1200521029 /* GameResultViewController.h */,
 				3D20CCBE17D50F1200521029 /* GameResultViewController.m */,
 				3D20CCC017D51E5B00521029 /* SettingViewController.h */,
@@ -431,6 +441,8 @@
 				3D03F6A317D42BCB00CF8E65 /* MatchingCardgameViewController.m in Sources */,
 				3D20CCBF17D50F1200521029 /* GameResultViewController.m in Sources */,
 				3D20CCC217D51E5C00521029 /* SettingViewController.m in Sources */,
+				3D20CCC517D56C6500521029 /* SelectedMatchingCardCollectionViewCell.m in Sources */,
+				3DBF4AD317D7D7D6008A8B70 /* MatchedMatchingCardCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
