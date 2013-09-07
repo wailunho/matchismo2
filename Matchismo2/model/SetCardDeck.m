@@ -16,15 +16,15 @@
     self = [super init];
     if(self)
     {
-        for(NSString *suit in [SetCard validSuits]){
-            for(int i = 1; i <= [SetCard maxNumOfSuits]; i++){
+        for(NSString *symbol in [SetCard validSymbols]){
+            for(int i = 1; i <= [SetCard maxNumOfSymbol]; i++){
                 for(NSString *color in [SetCard validColors]){
-                    for(NSNumber *shading in [SetCard validShadings]){
+                    for(NSString *shading in [SetCard validShadings]){
                         SetCard * card  = [[SetCard alloc] init];
-                        card.suit = suit;
+                        card.symbol = symbol;
                         card.color = color;
                         card.shading = shading;
-                        card.numOfSuit = i;
+                        card.numOfSymbol = i;
                         [self addCards:card atTop:YES];
                     }
                 }

@@ -47,7 +47,6 @@
                     {
                         otherCard.faceUp = NO;
                         self.score -= MISMATCH_PENALTY;
-                        //self.lastFlipResultString = [NSString stringWithFormat:@"%@ and %@ don't match! 2 points penality!", card.contents, otherCard.contents];
                         self.lastFlipResultString = [NSString stringWithFormat:@"Mismatched! -%d!", MISMATCH_PENALTY];
                     }
                     break;

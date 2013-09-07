@@ -8,34 +8,45 @@
 
 #import "SetCard.h"
 
-#define SetTypeSuit 1
-#define SetTypeNumOfSuit 2
+#define SetTypeSymbol 1
+#define SetTypeNumOfSymbol 2
 #define SetTypeColor 3
 #define SetTypeShading 4
-#define SetTypeDifferentSuit 5
-#define SetTypeDifferentNumOfSuit 6
+#define SetTypeDifferentSymbol 5
+#define SetTypeDifferentNumOfSymbol 6
 #define SetTypeDifferentColor 7
 #define SetTypeDifferentShading 8
 
-#define MaxNumberOfSuit 3
-#define ShadingValueLow @0.0
-#define ShadingValueMid @0.2
-#define ShadingValueHigh @1.0
+#define MaxNumberOfSymbol 3
 
 @implementation SetCard
 
-@synthesize suit = _suit;
+@synthesize symbol = _symbol, color = _color, shading = _shading;
 
--(NSString*) suit
+#pragma mark - Getters
+
+-(NSString*) symbol
 {
-    return _suit ? _suit : @"?";
+    return _symbol ? _symbol : @"?";
 }
 
--(void) setSuit:(NSString *)suit
+-(NSString *)color
 {
-    if([[SetCard validSuits] containsObject:suit])
+    return _color ? _color : @"?";
+}
+
+-(NSString *)shading
+{
+    return _shading ? _shading : @"?";
+}
+
+#pragma mark - Setters
+
+-(void) setSymbol:(NSString *)symbol
+{
+    if([[SetCard validSymbols] containsObject:symbol])
     {
-        _suit = suit;
+        _symbol = symbol;
     }
 }
 
@@ -47,7 +58,7 @@
     }
 }
 
--(void) setShading:(NSNumber *)shading
+-(void) setShading:(NSString *)shading
 {
     if([[SetCard validShadings] containsObject:shading])
     {
@@ -55,43 +66,42 @@
     }
 }
 
-+(NSArray*)validSuits
+#pragma mark - Helpers
+
++(NSArray*)validSymbols
 {
-    return @[@"■", @"▲", @"●"];
+    return @[@"diamond", @"squiggle", @"oval"];
 }
 
-+(int)maxNumOfSuits
++(int)maxNumOfSymbol
 {
-    return MaxNumberOfSuit;
+    return MaxNumberOfSymbol;
 }
 
 +(NSArray*)validColors
 {
-    return @[@"redColor", @"greenColor", @"blueColor"];
+    return @[@"red", @"green", @"purple"];
 }
 
 +(NSArray*)validShadings
 {
-    return @[ShadingValueLow, ShadingValueMid, ShadingValueHigh];
+    return @[@"solid", @"striped", @"open"];
 }
 
 -(NSString *)contents
 {
-    NSMutableString *cardMutableString = [[NSMutableString alloc] initWithString:@""];
-    for(int i = 1; i <= self.numOfSuit; i++)
-        [cardMutableString appendString:[NSString stringWithFormat:@"%@", self.suit]];
-    
-    NSString *cardString = [cardMutableString copy];
-    return cardString;
+    return [NSString stringWithFormat:@"%d %@ %@ %@", self.numOfSymbol, self.symbol, self.color, self.shading];
 }
+
+#pragma mark - Main Functions
 
 -(int)match:(NSArray *)otherCards
 {
     int score = 0;
-    //Among all four: suit, number of suit, color and shading. Each of them is either all matched
+    //Among all four: symbol, number of symbol, color and shading. Each of them is either all matched
     //or none matched.
-    if(([self matchASet:SetTypeSuit withCards:otherCards] || [self matchASet:SetTypeDifferentSuit withCards:otherCards]) &&
-       ([self matchASet:SetTypeNumOfSuit withCards:otherCards] || [self matchASet:SetTypeDifferentNumOfSuit withCards:otherCards]) &&
+    if(([self matchASet:SetTypeSymbol withCards:otherCards] || [self matchASet:SetTypeDifferentSymbol withCards:otherCards]) &&
+       ([self matchASet:SetTypeNumOfSymbol withCards:otherCards] || [self matchASet:SetTypeDifferentNumOfSymbol withCards:otherCards]) &&
        ([self matchASet:SetTypeColor withCards:otherCards] || [self matchASet:SetTypeDifferentColor withCards:otherCards]) &&
        ([self matchASet:SetTypeShading withCards:otherCards] || [self matchASet:SetTypeDifferentShading withCards:otherCards]))
         score = 1;
@@ -112,15 +122,15 @@
             SetCard *secondSetCard = (SetCard*)secondCard;
             SetCard *thirdSetCard = (SetCard*) thirdCard;
             switch (type) {
-                case SetTypeSuit:
-                    //Three cards have the same suit.
-                    if([secondSetCard.suit isEqualToString:self.suit] && [thirdSetCard.suit isEqualToString:self.suit])
+                case SetTypeSymbol:
+                    //Three cards have the same symbol.
+                    if([secondSetCard.symbol isEqualToString:self.symbol] && [thirdSetCard.symbol isEqualToString:self.symbol])
                         isMatch = YES;
                     break;
                     
-                case SetTypeNumOfSuit:
-                    //Three cards have the same number of suit.
-                    if(secondSetCard.numOfSuit == self.numOfSuit && thirdSetCard.numOfSuit == self.numOfSuit)
+                case SetTypeNumOfSymbol:
+                    //Three cards have the same number of symbol.
+                    if(secondSetCard.numOfSymbol == self.numOfSymbol && thirdSetCard.numOfSymbol == self.numOfSymbol)
                         isMatch = YES;
                     break;
                     
@@ -132,19 +142,19 @@
                     
                 case SetTypeShading:
                     //Three cards have the same shading.
-                    if([secondSetCard.shading isEqualToNumber: self.shading] && [thirdSetCard.shading isEqualToNumber: self.shading])
+                    if([secondSetCard.shading isEqualToString: self.shading] && [thirdSetCard.shading isEqualToString: self.shading])
                         isMatch = YES;
                     break;
                     
-                case SetTypeDifferentSuit:
-                    //Three cards have different suits.
-                    if(![secondSetCard.suit isEqualToString:self.suit] && ![thirdSetCard.suit isEqualToString:self.suit] && ![secondSetCard.suit isEqualToString:thirdSetCard.suit])
+                case SetTypeDifferentSymbol:
+                    //Three cards have different symbol.
+                    if(![secondSetCard.symbol isEqualToString:self.symbol] && ![thirdSetCard.symbol isEqualToString:self.symbol] && ![secondSetCard.symbol isEqualToString:thirdSetCard.symbol])
                         isMatch = YES;
                     break;
                     
-                case SetTypeDifferentNumOfSuit:
-                    //Three cards have different number of suit.
-                    if(secondSetCard.numOfSuit != self.numOfSuit && thirdSetCard.numOfSuit != self.numOfSuit && secondSetCard.numOfSuit != thirdSetCard.numOfSuit)
+                case SetTypeDifferentNumOfSymbol:
+                    //Three cards have different number of symbol.
+                    if(secondSetCard.numOfSymbol != self.numOfSymbol && thirdSetCard.numOfSymbol != self.numOfSymbol && secondSetCard.numOfSymbol != thirdSetCard.numOfSymbol)
                         isMatch = YES;
                     break;
                     
@@ -156,7 +166,7 @@
                     
                 case SetTypeDifferentShading:
                     //Three cards have different shadings.
-                    if(![secondSetCard.shading isEqualToNumber: self.shading] && ![thirdSetCard.shading isEqualToNumber: self.shading] && ![secondSetCard.shading isEqualToNumber: thirdSetCard.shading])
+                    if(![secondSetCard.shading isEqualToString: self.shading] && ![thirdSetCard.shading isEqualToString: self.shading] && ![secondSetCard.shading isEqualToString: thirdSetCard.shading])
                         isMatch = YES;
                     break;
                     

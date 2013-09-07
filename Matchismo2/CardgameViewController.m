@@ -197,6 +197,7 @@
     //remove cards from matched section
     [self removeMatchedCards];
     self.cardsMatched = nil;
+    self.cardsQueue = nil;
     [self updateUI];
 }
 - (IBAction)flipCard:(UITapGestureRecognizer*)gesture
@@ -250,7 +251,7 @@
                 }
             }
         }
-        
+        NSLog(@"%d", self.cardsQueue.count);
         //if the queue has count equal to the number of card to match, the
         //match/mismatch is found.
         if([self.cardsQueue count] == self.numOfCardToMatch)
@@ -260,6 +261,9 @@
         }
 
         [self updateUI];
+        
+        for(Card* card in self.cardsMatched)
+            NSLog(@"%@", card.contents);
         
         //synchronize the game result data with different keys
         if([self.game isMemberOfClass:[CardMatchingGame class]])

@@ -1,23 +1,19 @@
 //
-//  SetCard.h
-//  Matchismo
+//  SetCardView.h
+//  Matchismo2
 //
-//  Created by William Ho on 8/26/13.
+//  Created by William Ho on 9/5/13.
 //  Copyright (c) 2013 William Ho. All rights reserved.
 //
 
-#import "Card.h"
+#import <UIKit/UIKit.h>
 
-@interface SetCard : Card
+@interface SetCardView : UIView
 
 @property(strong, nonatomic) NSString *symbol;
 @property(nonatomic) int numOfSymbol;
 @property(strong, nonatomic) NSString *color;
 @property(strong, nonatomic) NSString *shading;
-
-+(NSArray*)validSymbols;
-+(NSArray*)validColors;
-+(NSArray*)validShadings;
-+(int)maxNumOfSymbol;
+@property(nonatomic) BOOL selected;
 
 @end
