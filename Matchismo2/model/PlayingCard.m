@@ -40,7 +40,7 @@
 {
     if([[PlayingCard validSuits] containsObject:suit])
     {
-            _suit = suit;
+        _suit = suit;
     }
 }
 

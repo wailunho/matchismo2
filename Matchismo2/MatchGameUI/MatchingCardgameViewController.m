@@ -25,7 +25,7 @@
 #define ALPHA_UNPLAYABLE 0.4
 #define ALPHA_PLAYABLE 1.0
 
-#pragma mark - Setters
+#pragma mark - Getters
 
 -(CardMatchingGame*)game
 {
