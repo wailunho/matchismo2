@@ -13,6 +13,7 @@
 
 @property (nonatomic) int score;
 @property (strong, nonatomic) NSMutableArray *cards;
+@property (strong, nonatomic) Deck *deck;
 @property (nonatomic, strong) NSString *lastFlipResultString;
 
 //designated initializer
@@ -21,5 +22,8 @@
 
 -(void)flipCardAtIndex:(NSUInteger) index;  //abstract
 -(id)cardAtIndex:(NSUInteger)index;
+-(void)removeCardAtIndex:(NSUInteger)index;
+-(void)removeCard:(Card*)card;
+-(void)addCard; //add card from the deck
 
 @end

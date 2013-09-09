@@ -16,8 +16,8 @@
 @implementation CardSetGame
 
 //socre multplier for card matching game
-#define MATCH_BONUS 8
-#define MISMATCH_PENALTY 4
+#define MATCH_BONUS 12
+#define MISMATCH_PENALTY 6
 #define FLIP_COST 1
 
 -(void)flipCardAtIndex:(NSUInteger) index
@@ -71,6 +71,33 @@
         }
         card.faceUp = !card.isFaceUp;
     }
+}
+
+-(NSMutableArray*)findHint
+{
+    //loop through all the combination and return the first matched one.
+    NSMutableArray *cardsForHint = [[NSMutableArray alloc] init];
+    for(int i = 0; i < [self.cards count] - 2; i++)
+    {
+        for(int j = i + 1; j < [self.cards count] - 1; j++)
+        {
+            for(int k = j + 1; k < [self.cards count]; k++)
+            {
+                SetCard *firstCard = self.cards[i];
+                SetCard *secondCard = self.cards[j];
+                SetCard *thirdCard = self.cards[k];
+                //match is found, store it and exit the loops
+                if([firstCard match:@[secondCard, thirdCard]])
+                {
+                    [cardsForHint addObjectsFromArray:@[firstCard, secondCard, thirdCard]];
+                    goto DONE;
+                }
+            }
+        }
+    }
+    
+DONE:
+    return cardsForHint;
 }
 
 @end

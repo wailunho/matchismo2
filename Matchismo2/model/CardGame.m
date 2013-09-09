@@ -10,6 +10,12 @@
 
 @implementation CardGame
 
+-(Deck *)deck
+{
+    if(!_deck)_deck = [[Deck alloc] init];
+    return _deck;
+}
+
 -(NSMutableArray*)cards
 {
     if(!_cards)_cards = [[NSMutableArray alloc] init];
@@ -27,15 +33,37 @@
     return (index < [self.cards count]) ? self.cards[index] : nil;
 }
 
+-(void)removeCardAtIndex:(NSUInteger)index
+{
+    [self.cards removeObjectAtIndex:index];
+}
+
+-(void)removeCard:(Card*)card
+{
+    for(int i = 0; i < [self.cards count]; i++)
+    {
+        if([[self.cards[i] contents] isEqualToString:card.contents])
+            [self removeCardAtIndex:i];
+    }
+}
+
+-(void)addCard
+{
+    Card* card = [self.deck drawRandomCard];
+    if(card)
+        [self.cards addObject:card];
+}
+
 -(id)initWithCardCount:(NSUInteger)count
-             usingDeck:(Deck*) deck;
+             usingDeck:(Deck*) deck
 {
     self = [super init];
     if(self)
     {
+        self.deck = deck;
         for(int i = 0; i < count; i++)
         {
-            Card *card = [deck drawRandomCard];
+            Card *card = [self.deck drawRandomCard];
             if(card)
                 self.cards[i] = card;
             else

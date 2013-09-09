@@ -80,7 +80,10 @@
             setCardView.shading = setCard.shading;
             setCardView.selected = setCard.faceUp;
             if(setCard.isUnplayable)
+            {
+                [self.game removeCard:setCard];
                 [self removeCardAtCell:cell];
+            }
             setCardView.hintOn = NO;
             for(SetCard* otherSetCard in self.cardsForHint)
             {
@@ -131,26 +134,20 @@
 
 - (IBAction)showHint:(id)sender
 {
-    self.cardsForHint = nil;
-    for(int i = 0; i < [self.game.cards count] - 2; i++)
+    self.cardsForHint = [self.game findHint];
+    [self updateUI];
+}
+
+- (IBAction)addThreeCards:(id)sender
+{
+    if(3 <= [self.game.deck.cards count])
     {
-        for(int j = i + 1; j < [self.game.cards count] - 1; j++)
+        for(int i = 0; i < 3; i++)
         {
-            for(int k = j + 1; k < [self.game.cards count]; k++)
-            {
-                SetCard *firstCard = self.game.cards[i];
-                SetCard *secondCard = self.game.cards[j];
-                SetCard *thirdCard = self.game.cards[k];
-                if([firstCard match:@[secondCard, thirdCard]])
-                {
-                    [self.cardsForHint addObjectsFromArray:@[firstCard, secondCard, thirdCard]];
-                    goto DONE;
-                }
-            }
+            [self.game addCard];
+            [self addCard];
         }
     }
-    DONE:
-    [self updateUI];
 }
 
 @end

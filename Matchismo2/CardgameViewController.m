@@ -265,10 +265,6 @@
 
         [self updateUI];
         
-        //for debugging=====================
-        for(Card* card in self.cardsMatched)
-            NSLog(@"%@", card.contents);
-        
         //synchronize the game result data with different keys
         if([self.game isMemberOfClass:[CardMatchingGame class]])
             [self.gameResult synchronizeWithKey:MATCH_RESULTS_KEY];
@@ -317,6 +313,12 @@
     self.currentNumOfCards--;
     NSIndexPath *indexPath = [self.cardCollectionView indexPathForCell:cell];
     [self.cardCollectionView deleteItemsAtIndexPaths:@[indexPath]];
+}
+
+-(void)addCard
+{
+    self.currentNumOfCards++;
+    [self.cardCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:self.currentNumOfCards - 1 inSection:0]]];
 }
 
 @end

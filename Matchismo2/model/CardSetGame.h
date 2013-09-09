@@ -10,4 +10,6 @@
 
 @interface CardSetGame : CardGame
 
+-(NSMutableArray*)findHint;
+
 @end
