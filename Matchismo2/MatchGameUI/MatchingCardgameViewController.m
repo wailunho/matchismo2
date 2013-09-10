@@ -13,10 +13,12 @@
 #import "SelectedMatchingCardCollectionViewCell.h"
 #import "MatchedMatchingCardCollectionViewCell.h"
 #import "MatchingGameResult.h"
+#import "GameSetting.h"
 
 @interface MatchingCardgameViewController ()
 
 @property (strong, nonatomic) CardMatchingGame *game;
+@property (strong, nonatomic) GameSetting *setting;
 
 @end
 
@@ -35,11 +37,15 @@
 
 -(NSUInteger)startingCardCount
 {
-    return 22;
+    return [GameSetting numOfStartingCard];
 }
 -(NSUInteger)numOfCardToMatch
 {
     return 2;
+}
+-(BOOL)removeCardsFromView
+{
+    return NO;
 }
 
 #pragma mark - Main Functions

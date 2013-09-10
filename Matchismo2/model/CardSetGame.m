@@ -76,7 +76,7 @@
 -(NSMutableArray*)findHint
 {
     //loop through all the combination and return the first matched one.
-    NSMutableArray *cardsForHint = [[NSMutableArray alloc] init];
+    NSMutableArray *cardsForHint = nil;
     for(int i = 0; i < [self.cards count] - 2; i++)
     {
         for(int j = i + 1; j < [self.cards count] - 1; j++)
@@ -89,7 +89,7 @@
                 //match is found, store it and exit the loops
                 if([firstCard match:@[secondCard, thirdCard]])
                 {
-                    [cardsForHint addObjectsFromArray:@[firstCard, secondCard, thirdCard]];
+                    cardsForHint = [[NSMutableArray alloc] initWithObjects:firstCard,secondCard, thirdCard, nil];
                     goto DONE;
                 }
             }

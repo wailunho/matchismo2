@@ -530,10 +530,10 @@
                             <constraint firstItem="J0r-bE-ZLd" firstAttribute="trailing" secondItem="FBq-a7-9Bm" secondAttribute="trailing" type="default" id="QdO-we-RIy"/>
                             <constraint firstItem="Em6-V4-YyD" firstAttribute="baseline" secondItem="Rlq-5s-d3T" secondAttribute="baseline" type="default" id="SUK-Pb-UIy"/>
                             <constraint firstItem="cxx-Ia-HLR" firstAttribute="centerX" secondItem="J0r-bE-ZLd" secondAttribute="centerX" type="default" id="VRe-kz-ih2"/>
-                            <constraint firstItem="0Mc-w6-fpL" firstAttribute="leading" secondItem="pBq-j0-aBd" secondAttribute="leading" type="default" id="VuF-NT-plg"/>
-                            <constraint firstAttribute="trailing" secondItem="pBq-j0-aBd" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Zbb-Va-2ee"/>
+                            <constraint firstItem="0Mc-w6-fpL" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" constant="136" id="Zrg-9s-SIr"/>
                             <constraint firstAttribute="bottom" secondItem="Em6-V4-YyD" secondAttribute="bottom" constant="5" id="awY-py-wld"/>
                             <constraint firstAttribute="bottom" secondItem="M9G-Pq-dNN" secondAttribute="bottom" constant="27" id="bw6-Ig-zEN"/>
+                            <constraint firstItem="pBq-j0-aBd" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" constant="142" id="dC2-jv-RNF"/>
                             <constraint firstItem="OAa-m8-gB5" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" constant="10" id="e6i-Yd-zRm"/>
                             <constraint firstItem="Em6-V4-YyD" firstAttribute="baseline" secondItem="OAa-m8-gB5" secondAttribute="baseline" type="default" id="f8a-hs-3f0"/>
                             <constraint firstItem="0Mc-w6-fpL" firstAttribute="top" secondItem="gzV-hB-exB" secondAttribute="top" type="default" id="iLB-eC-caf"/>
@@ -593,22 +593,58 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="!!Warning!!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qO9-4i-FOZ">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="4Bv-Re-q75"/>
-                                    <constraint firstAttribute="width" constant="208" id="dfq-4u-gaD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="38"/>
                                 <color key="textColor" red="1" green="0.1948228196" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="22" minValue="0.0" maxValue="52" translatesAutoresizingMaskIntoConstraints="NO" id="ODe-j8-HvH">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="ZeP-fl-pE6"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="changeNumOfStartingCard:" destination="Fsm-3H-gIO" eventType="valueChanged" id="JQB-DZ-Yrl"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of starting cards: 22" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJS-4X-NKX">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="AHX-1b-lzi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Matching Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLo-M6-ChP">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="191" id="g4R-73-Yob"/>
+                                    <constraint firstAttribute="height" constant="26" id="mnu-Ba-Wpr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ODe-j8-HvH" firstAttribute="trailing" secondItem="qO9-4i-FOZ" secondAttribute="trailing" type="default" id="1d5-aP-hnI"/>
+                            <constraint firstItem="ODe-j8-HvH" firstAttribute="top" secondItem="VZp-pf-A1f" secondAttribute="top" constant="113" id="21W-18-q2p"/>
+                            <constraint firstItem="ODe-j8-HvH" firstAttribute="centerX" secondItem="VZp-pf-A1f" secondAttribute="centerX" type="default" id="23K-nU-kkR"/>
                             <constraint firstItem="qO9-4i-FOZ" firstAttribute="centerX" secondItem="xdN-Iv-2uk" secondAttribute="centerX" type="default" id="6eo-78-hA2"/>
-                            <constraint firstItem="qO9-4i-FOZ" firstAttribute="centerX" secondItem="VZp-pf-A1f" secondAttribute="centerX" type="default" id="HcL-EQ-SAG"/>
-                            <constraint firstItem="qO9-4i-FOZ" firstAttribute="top" secondItem="VZp-pf-A1f" secondAttribute="top" constant="124" id="llw-5y-1Qo"/>
-                            <constraint firstItem="xdN-Iv-2uk" firstAttribute="top" secondItem="VZp-pf-A1f" secondAttribute="top" constant="203" id="mOn-eB-eYN"/>
+                            <constraint firstAttribute="trailing" secondItem="vJS-4X-NKX" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="8GK-xY-AwN"/>
+                            <constraint firstItem="vJS-4X-NKX" firstAttribute="leading" secondItem="ODe-j8-HvH" secondAttribute="leading" type="default" id="HUg-Q3-908"/>
+                            <constraint firstItem="vJS-4X-NKX" firstAttribute="top" secondItem="VZp-pf-A1f" secondAttribute="top" constant="86" id="UWD-Pd-Ygi"/>
+                            <constraint firstAttribute="bottom" secondItem="xdN-Iv-2uk" secondAttribute="bottom" constant="87" id="ZeB-x6-eia"/>
+                            <constraint firstItem="oLo-M6-ChP" firstAttribute="top" secondItem="VZp-pf-A1f" secondAttribute="top" constant="50" id="fND-5f-oIa"/>
+                            <constraint firstItem="qO9-4i-FOZ" firstAttribute="leading" secondItem="ODe-j8-HvH" secondAttribute="leading" type="default" id="fvn-H2-9VP"/>
+                            <constraint firstAttribute="bottom" secondItem="qO9-4i-FOZ" secondAttribute="bottom" constant="131" id="tlw-kL-A6P"/>
+                            <constraint firstItem="oLo-M6-ChP" firstAttribute="centerX" secondItem="ODe-j8-HvH" secondAttribute="centerX" type="default" id="utl-dL-9HV"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Setting" image="gear.png" id="ILN-oU-MLL"/>
+                    <connections>
+                        <outlet property="numOfStartingCardLabel" destination="vJS-4X-NKX" id="9nJ-zE-Yp7"/>
+                        <outlet property="numOfStartingCardSlider" destination="ODe-j8-HvH" id="FRI-Lg-pkv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tZY-ei-njZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -692,13 +728,17 @@
         <class className="SetCardgameViewController" superclassName="CardgameViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetCardgameViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addThreeCards:"/>
                 <relationship kind="action" name="showHint:"/>
             </relationships>
         </class>
         <class className="SettingViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
             <relationships>
+                <relationship kind="action" name="changeNumOfStartingCard:"/>
                 <relationship kind="action" name="resetRanking:"/>
+                <relationship kind="outlet" name="numOfStartingCardLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="numOfStartingCardSlider" candidateClass="UISlider"/>
             </relationships>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">

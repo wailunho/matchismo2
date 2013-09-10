@@ -14,7 +14,8 @@
 
 //all abstracts need to be overrided
 @property (readonly, nonatomic) NSUInteger startingCardCount; //abstract
-@property (readonly, nonatomic) NSUInteger numOfCardToMatch; //abstracts
+@property (readonly, nonatomic) NSUInteger numOfCardToMatch; //abstract
+@property (nonatomic) BOOL removeCardsFromView; //abstract
 
 - (Deck *)createDeck; // abstract
 - (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card; // abstract
@@ -22,4 +23,6 @@
 -(void)removeCardAtCell:(UICollectionViewCell*)cell;
 -(void)addCard;
 - (void)updateUI;
+-(void)removeUnplayableCards;
+-(void)reloadCardData;
 @end

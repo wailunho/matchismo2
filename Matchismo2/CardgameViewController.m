@@ -261,8 +261,9 @@
         {
             self.cardsMatched = [[NSMutableArray alloc] initWithArray:self.cardsQueue];
             self.cardsQueue = [[NSMutableArray alloc] initWithArray:self.cardsSelected];
+            if(self.removeCardsFromView)
+                [self removeUnplayableCards];
         }
-
         [self updateUI];
         
         //synchronize the game result data with different keys
@@ -302,7 +303,6 @@
         //add cards into matched/mismatched section
         [self addCardsFromMatched];
     }
-    
     //update other labels
     self.matchedLabel.text = self.game.lastFlipResultString;
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
@@ -311,14 +311,35 @@
 -(void)removeCardAtCell:(UICollectionViewCell*)cell
 {
     self.currentNumOfCards--;
-    NSIndexPath *indexPath = [self.cardCollectionView indexPathForCell:cell];
-    [self.cardCollectionView deleteItemsAtIndexPaths:@[indexPath]];
+    [self.cardCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]]];
 }
 
 -(void)addCard
 {
     self.currentNumOfCards++;
     [self.cardCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:self.currentNumOfCards - 1 inSection:0]]];
+}
+
+-(void)removeUnplayableCards
+{
+    int i = 0;
+    while(i < self.currentNumOfCards)
+    {
+        Card *card = self.game.cards[i];
+        if(card.isUnplayable)
+        {
+            self.currentNumOfCards--;
+            [self.game removeCard:card];
+            [self.cardCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:i inSection:0]]];
+        }
+        else
+            i++;
+    }
+}
+
+-(void)reloadCardData
+{
+    [self.cardCollectionView reloadData];
 }
 
 @end

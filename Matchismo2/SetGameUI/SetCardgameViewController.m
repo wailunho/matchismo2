@@ -55,6 +55,11 @@
     return _cardsForHint;
 }
 
+-(BOOL)removeCardsFromView
+{
+    return YES;
+}
+
 #pragma mark - Helpers
 
 
@@ -79,11 +84,6 @@
             setCardView.color = setCard.color;
             setCardView.shading = setCard.shading;
             setCardView.selected = setCard.faceUp;
-            if(setCard.isUnplayable)
-            {
-                [self.game removeCard:setCard];
-                [self removeCardAtCell:cell];
-            }
             setCardView.hintOn = NO;
             for(SetCard* otherSetCard in self.cardsForHint)
             {
@@ -135,7 +135,8 @@
 - (IBAction)showHint:(id)sender
 {
     self.cardsForHint = [self.game findHint];
-    [self updateUI];
+    if(self.cardsForHint)
+        [self updateUI];
 }
 
 - (IBAction)addThreeCards:(id)sender
