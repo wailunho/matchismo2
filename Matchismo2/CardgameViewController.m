@@ -308,12 +308,6 @@
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
 }
 
--(void)removeCardAtCell:(UICollectionViewCell*)cell
-{
-    self.currentNumOfCards--;
-    [self.cardCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:0]]];
-}
-
 -(void)addCard
 {
     self.currentNumOfCards++;
@@ -336,10 +330,4 @@
             i++;
     }
 }
-
--(void)reloadCardData
-{
-    [self.cardCollectionView reloadData];
-}
-
 @end
