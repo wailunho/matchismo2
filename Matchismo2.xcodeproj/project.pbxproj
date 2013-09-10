@@ -64,7 +64,6 @@
 		3DC1EA6B17DEFDC50024BE8F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DC1EA6417DEFDC50024BE8F /* Default.png */; };
 		3DC1EA6C17DEFDC50024BE8F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DC1EA6517DEFDC50024BE8F /* Default@2x.png */; };
 		3DC1EA6D17DEFDC50024BE8F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DC1EA6617DEFDC50024BE8F /* main.m */; };
-		3DC1EA6E17DEFDC50024BE8F /* Matchismo2-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DC1EA6717DEFDC50024BE8F /* Matchismo2-Info.plist */; };
 		3DC1EA7117DEFE030024BE8F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3DC1EA6F17DEFE030024BE8F /* InfoPlist.strings */; };
 		3DF7065817DD4A08005CE9E6 /* SelectedSetCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF7065717DD4A08005CE9E6 /* SelectedSetCardCollectionViewCell.m */; };
 		3DF7065B17DD4A29005CE9E6 /* MatchedSetCardCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF7065A17DD4A29005CE9E6 /* MatchedSetCardCollectionViewCell.m */; };
@@ -154,9 +153,9 @@
 		3DC1EA6417DEFDC50024BE8F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3DC1EA6517DEFDC50024BE8F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3DC1EA6617DEFDC50024BE8F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3DC1EA6717DEFDC50024BE8F /* Matchismo2-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Matchismo2-Info.plist"; sourceTree = "<group>"; };
 		3DC1EA6817DEFDC50024BE8F /* Matchismo2-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Matchismo2-Prefix.pch"; sourceTree = "<group>"; };
 		3DC1EA7017DEFE030024BE8F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Matchismo2/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		3DC1EA7217DF01C20024BE8F /* Matchismo2-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Matchismo2-Info.plist"; sourceTree = "<group>"; };
 		3DF7065617DD4A08005CE9E6 /* SelectedSetCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedSetCardCollectionViewCell.h; sourceTree = "<group>"; };
 		3DF7065717DD4A08005CE9E6 /* SelectedSetCardCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedSetCardCollectionViewCell.m; sourceTree = "<group>"; };
 		3DF7065917DD4A29005CE9E6 /* MatchedSetCardCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchedSetCardCollectionViewCell.h; sourceTree = "<group>"; };
@@ -193,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				3D03F61A17D29C8F00CF8E65 /* Matchismo2 */,
+				3DC1EA6017DEFDC50024BE8F /* Supporting Files */,
 				3D03F61317D29C8F00CF8E65 /* Frameworks */,
 				3D03F61217D29C8F00CF8E65 /* Products */,
 			);
@@ -226,7 +226,6 @@
 				3D20CCBE17D50F1200521029 /* GameResultViewController.m */,
 				3D20CCC017D51E5B00521029 /* SettingViewController.h */,
 				3D20CCC117D51E5B00521029 /* SettingViewController.m */,
-				3DC1EA6017DEFDC50024BE8F /* Supporting Files */,
 				3DF7676217DA7F1000DC3E1F /* SetGameUI */,
 				3DF7675517DA7ED800DC3E1F /* MatchGameUI */,
 				3D03F69A17D2A74100CF8E65 /* CardView */,
@@ -333,8 +332,8 @@
 				3DC1EA6317DEFDC50024BE8F /* Default-568h@2x.png */,
 				3DC1EA6417DEFDC50024BE8F /* Default.png */,
 				3DC1EA6517DEFDC50024BE8F /* Default@2x.png */,
+				3DC1EA7217DF01C20024BE8F /* Matchismo2-Info.plist */,
 				3DC1EA6617DEFDC50024BE8F /* main.m */,
-				3DC1EA6717DEFDC50024BE8F /* Matchismo2-Info.plist */,
 				3DC1EA6817DEFDC50024BE8F /* Matchismo2-Prefix.pch */,
 				3DC1EA6F17DEFE030024BE8F /* InfoPlist.strings */,
 			);
@@ -458,7 +457,6 @@
 				3DC1EA6A17DEFDC50024BE8F /* Default-568h@2x.png in Resources */,
 				3DC1EA6B17DEFDC50024BE8F /* Default.png in Resources */,
 				3DC1EA6C17DEFDC50024BE8F /* Default@2x.png in Resources */,
-				3DC1EA6E17DEFDC50024BE8F /* Matchismo2-Info.plist in Resources */,
 				3DC1EA7117DEFE030024BE8F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,8 +581,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Matchismo2/Matchismo2-Prefix.pch";
-				INFOPLIST_FILE = "Matchismo2/Matchismo2-Info.plist";
+				GCC_PREFIX_HEADER = "Matchismo2/Supporting Files/Matchismo2-Prefix.pch";
+				INFOPLIST_FILE = "Matchismo2/Supporting Files/Matchismo2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -594,8 +592,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Matchismo2/Matchismo2-Prefix.pch";
-				INFOPLIST_FILE = "Matchismo2/Matchismo2-Info.plist";
+				GCC_PREFIX_HEADER = "Matchismo2/Supporting Files/Matchismo2-Prefix.pch";
+				INFOPLIST_FILE = "Matchismo2/Supporting Files/Matchismo2-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

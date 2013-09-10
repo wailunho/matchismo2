@@ -54,12 +54,10 @@
 
 
 //overriding the method matches in Card.h
-//matches either 2 cards or 3 cards
 -(int)match:(NSArray *)otherCards
 {
     int score = 0;
     
-    //2-cards mode
     //compare the suit and rank between two cards
     //get score if suit or rank matched
     if([otherCards count] == 1)
@@ -78,29 +76,6 @@
             }
         }
     }
-    /*
-    //3-cards mode
-    //Similar to 2-cards mode but it compares the suit and rank among all three cards
-    else if([otherCards count] == 2)
-    {
-        id secondCard = [otherCards objectAtIndex:0];
-        id thirdCard = [otherCards lastObject];
-        if([secondCard isKindOfClass:[PlayingCard class]] && [thirdCard isKindOfClass:[PlayingCard class]])
-        {
-            PlayingCard *secondPlayingCard = (PlayingCard*)secondCard;
-            PlayingCard *thirdPlayingCard = (PlayingCard*) thirdCard;
-            if([secondPlayingCard.suit isEqualToString:self.suit] && [thirdPlayingCard.suit isEqualToString:self.suit])
-            {
-                score = 4;
-            }
-            else if(secondPlayingCard.rank == self.rank && thirdPlayingCard.rank == self.rank)
-            {
-                score = 16;
-            }
-
-        }
-    }
-     */
     return score;
 }
 @end

@@ -14,15 +14,17 @@
 #define END_KEY @"EndDate"
 #define SCORE_KEY @"Score"
 
-+(NSArray*) allGameResultsWithKey:(NSString*)key
+#pragma mark -Init
+
+// designated initializer
+- (id)init
 {
-    NSMutableArray *allGameResults = [[NSMutableArray alloc] init];
-    for(id plist in [[[NSUserDefaults standardUserDefaults] dictionaryForKey:key] allValues])
-    {
-        GameResult *result = [[GameResult alloc] initFromPropertyList:plist];
-        [allGameResults addObject:result];
+    self = [super init];
+    if (self) {
+        _start = [NSDate date];
+        _end = _start;
     }
-    return allGameResults;
+    return self;
 }
 
 - (id)initFromPropertyList:(id)plist
@@ -42,6 +44,41 @@
     return self;
 }
 
+#pragma mark - Setters
+
+- (void)setScore:(int)score
+{
+    _score = score;
+    self.end = [NSDate date];
+}
+
+#pragma mark - Getters
+
++(NSArray*) allGameResultsWithKey:(NSString*)key
+{
+    NSMutableArray *allGameResults = [[NSMutableArray alloc] init];
+    for(id plist in [[[NSUserDefaults standardUserDefaults] dictionaryForKey:key] allValues])
+    {
+        GameResult *result = [[GameResult alloc] initFromPropertyList:plist];
+        [allGameResults addObject:result];
+    }
+    return allGameResults;
+}
+
+#pragma mark - Helpers
+
+- (id)asPropertyList
+{
+    return @{ START_KEY : self.start, END_KEY : self.end, SCORE_KEY : @(self.score) };
+}
+
+- (NSTimeInterval)duration
+{
+    return [self.end timeIntervalSinceDate:self.start];
+}
+
+#pragma mark - Main Functions
+
 -(void)synchronizeWithKey:(NSString*)key
 {
     NSMutableDictionary *mutableMatchGameResultsFromUserDefaults = [[[NSUserDefaults standardUserDefaults] dictionaryForKey:key] mutableCopy];
@@ -50,33 +87,6 @@
     mutableMatchGameResultsFromUserDefaults[[self.start description]] = [self asPropertyList];
     [[NSUserDefaults standardUserDefaults] setObject:mutableMatchGameResultsFromUserDefaults forKey:key];
     [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
-- (id)asPropertyList
-{
-    return @{ START_KEY : self.start, END_KEY : self.end, SCORE_KEY : @(self.score) };
-}
-
-// designated initializer
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        _start = [NSDate date];
-        _end = _start;
-    }
-    return self;
-}
-
-- (NSTimeInterval)duration
-{
-    return [self.end timeIntervalSinceDate:self.start];
-}
-
-- (void)setScore:(int)score
-{
-    _score = score;
-    self.end = [NSDate date];
 }
 
 - (NSComparisonResult)compareScoreToGameResult:(GameResult *)otherResult

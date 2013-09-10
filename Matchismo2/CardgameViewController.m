@@ -261,6 +261,7 @@
         {
             self.cardsMatched = [[NSMutableArray alloc] initWithArray:self.cardsQueue];
             self.cardsQueue = [[NSMutableArray alloc] initWithArray:self.cardsSelected];
+            //remove cards from view when cards are unplayable
             if(self.removeCardsFromView)
                 [self removeUnplayableCards];
         }
@@ -308,9 +309,10 @@
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
 }
 
--(void)addCard
+-(void)addCardToCardCollectionView
 {
     self.currentNumOfCards++;
+    [self.game addCard];
     [self.cardCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:self.currentNumOfCards - 1 inSection:0]]];
 }
 

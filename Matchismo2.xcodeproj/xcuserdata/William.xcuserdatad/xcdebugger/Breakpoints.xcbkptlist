@@ -34,11 +34,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Matchismo2/SettingViewController.m"
-         timestampString = "400445791.885975"
+         timestampString = "400491815.927566"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "62"
-         endingLineNumber = "62"
+         startingLineNumber = "48"
+         endingLineNumber = "48"
          landmarkName = "-changeNumOfStartingCard:"
          landmarkType = "5">
       </FileBreakpoint>

@@ -27,6 +27,8 @@
     return self;
 }
 
+#pragma mark - Getters
+
 +(NSUInteger)numOfStartingCard
 {
     NSUInteger num = [[NSUserDefaults standardUserDefaults] integerForKey:SETTING_NUM_OF_STARTING_CARD_KEY];
@@ -35,6 +37,8 @@
     else
         return SETTING_DEFAULT_NUM_OF_STARTING_CARD;
 }
+
+#pragma mark - Setters
 
 -(void)setNumOfStartingCard:(NSUInteger)numOfStartingCard
 {

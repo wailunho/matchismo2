@@ -20,6 +20,6 @@
 - (Deck *)createDeck; // abstract
 - (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card; // abstract
 -(void)synchronize:(GameResult*)gameResult; //abstract
--(void)addCard;
+-(void)addCardToCardCollectionView;
 - (void)updateUI;
 @end

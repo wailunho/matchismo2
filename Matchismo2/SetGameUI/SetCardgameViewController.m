@@ -145,8 +145,7 @@
     {
         for(int i = 0; i < 3; i++)
         {
-            [self.game addCard];
-            [self addCard];
+            [self addCardToCardCollectionView];
         }
     }
 }
