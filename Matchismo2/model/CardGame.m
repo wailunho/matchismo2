@@ -76,4 +76,9 @@
     return self;
 }
 
+-(void)receivePenalty:(int)points
+{
+    self.score -= points;
+}
+
 @end

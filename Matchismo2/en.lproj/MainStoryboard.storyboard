@@ -485,7 +485,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OAa-m8-gB5">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="c77-vJ-aTp"/>
-                                    <constraint firstAttribute="width" constant="30" id="xE3-X0-7wN"/>
+                                    <constraint firstAttribute="width" constant="36" id="pAI-g9-ypc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                 <state key="normal" title="+3">
@@ -501,10 +501,10 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Em6-V4-YyD">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="76d-gd-TdO"/>
+                                    <constraint firstAttribute="width" constant="53" id="QVJ-46-K3j"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                <state key="normal" title="?">
+                                <state key="normal" title="Hint: 0">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -520,6 +520,7 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Rlq-5s-d3T" secondAttribute="trailing" constant="27" id="0BD-Od-1lJ"/>
+                            <constraint firstItem="gzV-hB-exB" firstAttribute="trailing" secondItem="Em6-V4-YyD" secondAttribute="trailing" type="default" id="3qL-dR-n8r"/>
                             <constraint firstItem="cxx-Ia-HLR" firstAttribute="top" secondItem="FBq-a7-9Bm" secondAttribute="top" constant="372" id="4YR-sx-asF"/>
                             <constraint firstItem="Em6-V4-YyD" firstAttribute="top" secondItem="OAa-m8-gB5" secondAttribute="top" type="default" id="8IS-ro-z55"/>
                             <constraint firstItem="J0r-bE-ZLd" firstAttribute="top" secondItem="FBq-a7-9Bm" secondAttribute="top" type="default" id="Be8-6u-w9U"/>
@@ -527,29 +528,30 @@
                             <constraint firstAttribute="bottom" secondItem="gzV-hB-exB" secondAttribute="bottom" constant="110" id="MVg-Ga-T3b"/>
                             <constraint firstItem="Em6-V4-YyD" firstAttribute="top" secondItem="Rlq-5s-d3T" secondAttribute="top" type="default" id="MuX-5h-uTl"/>
                             <constraint firstItem="pBq-j0-aBd" firstAttribute="bottom" secondItem="M9G-Pq-dNN" secondAttribute="bottom" type="default" id="Q7Y-Wz-LJ2"/>
+                            <constraint firstItem="gzV-hB-exB" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" constant="38" id="QJL-QH-u1Q"/>
                             <constraint firstItem="J0r-bE-ZLd" firstAttribute="trailing" secondItem="FBq-a7-9Bm" secondAttribute="trailing" type="default" id="QdO-we-RIy"/>
                             <constraint firstItem="Em6-V4-YyD" firstAttribute="baseline" secondItem="Rlq-5s-d3T" secondAttribute="baseline" type="default" id="SUK-Pb-UIy"/>
+                            <constraint firstItem="M9G-Pq-dNN" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" constant="10" id="UnR-BW-YI0"/>
                             <constraint firstItem="cxx-Ia-HLR" firstAttribute="centerX" secondItem="J0r-bE-ZLd" secondAttribute="centerX" type="default" id="VRe-kz-ih2"/>
                             <constraint firstItem="0Mc-w6-fpL" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" constant="136" id="Zrg-9s-SIr"/>
-                            <constraint firstAttribute="bottom" secondItem="Em6-V4-YyD" secondAttribute="bottom" constant="5" id="awY-py-wld"/>
                             <constraint firstAttribute="bottom" secondItem="M9G-Pq-dNN" secondAttribute="bottom" constant="27" id="bw6-Ig-zEN"/>
                             <constraint firstItem="pBq-j0-aBd" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" constant="142" id="dC2-jv-RNF"/>
-                            <constraint firstItem="OAa-m8-gB5" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" constant="10" id="e6i-Yd-zRm"/>
                             <constraint firstItem="Em6-V4-YyD" firstAttribute="baseline" secondItem="OAa-m8-gB5" secondAttribute="baseline" type="default" id="f8a-hs-3f0"/>
                             <constraint firstItem="0Mc-w6-fpL" firstAttribute="top" secondItem="gzV-hB-exB" secondAttribute="top" type="default" id="iLB-eC-caf"/>
                             <constraint firstItem="Em6-V4-YyD" firstAttribute="bottom" secondItem="OAa-m8-gB5" secondAttribute="bottom" type="default" id="nIu-qB-eMz"/>
-                            <constraint firstItem="Em6-V4-YyD" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" constant="60" id="piT-7N-aK6"/>
                             <constraint firstItem="J0r-bE-ZLd" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" type="default" id="rUQ-Z9-bea"/>
                             <constraint firstItem="Em6-V4-YyD" firstAttribute="bottom" secondItem="Rlq-5s-d3T" secondAttribute="bottom" type="default" id="rfr-zZ-yea"/>
                             <constraint firstItem="gzV-hB-exB" firstAttribute="baseline" secondItem="0Mc-w6-fpL" secondAttribute="baseline" type="default" id="wah-Oc-lYm"/>
-                            <constraint firstItem="Em6-V4-YyD" firstAttribute="centerX" secondItem="gzV-hB-exB" secondAttribute="centerX" type="default" id="x9Q-4W-cpw"/>
+                            <constraint firstAttribute="bottom" secondItem="OAa-m8-gB5" secondAttribute="bottom" constant="5" id="x8R-SX-2bg"/>
                             <constraint firstItem="OAa-m8-gB5" firstAttribute="leading" secondItem="M9G-Pq-dNN" secondAttribute="leading" type="default" id="xQO-N0-aBD"/>
                             <constraint firstItem="Em6-V4-YyD" firstAttribute="baseline" secondItem="cxx-Ia-HLR" secondAttribute="baseline" type="default" id="xW0-aI-pBG"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Set" image="setIcon.png" id="IEw-4Y-6CW"/>
                     <connections>
+                        <outlet property="addThreeCardsButton" destination="OAa-m8-gB5" id="hwN-s5-mQU"/>
                         <outlet property="cardCollectionView" destination="J0r-bE-ZLd" id="MzK-6h-u7O"/>
+                        <outlet property="hintButton" destination="Em6-V4-YyD" id="6z7-2a-5vU"/>
                         <outlet property="matchedCardCollectionView" destination="pBq-j0-aBd" id="jhH-Rj-iZ1"/>
                         <outlet property="matchedLabel" destination="0Mc-w6-fpL" id="9vQ-z7-F3k"/>
                         <outlet property="scoreLabel" destination="cxx-Ia-HLR" id="ljI-8Q-3UH"/>
@@ -730,6 +732,8 @@
             <relationships>
                 <relationship kind="action" name="addThreeCards:"/>
                 <relationship kind="action" name="showHint:"/>
+                <relationship kind="outlet" name="addThreeCardsButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="hintButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="SettingViewController" superclassName="UIViewController">

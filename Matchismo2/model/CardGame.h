@@ -25,5 +25,6 @@
 -(void)removeCardAtIndex:(NSUInteger)index;
 -(void)removeCard:(Card*)card;
 -(void)addCard; //add card from the deck
+-(void)receivePenalty:(int)points;
 
 @end

@@ -11,6 +11,7 @@
 #import "Deck.h"
 
 @interface CardSetGame()
+
 @end
 
 @implementation CardSetGame
@@ -19,6 +20,17 @@
 #define MATCH_BONUS 12
 #define MISMATCH_PENALTY 6
 #define FLIP_COST 1
+#define ADD_CARDS_WHEN_MATCH_EXISTED_PENALTY 16
+
+-(id)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck
+{
+    self = [super initWithCardCount:count usingDeck:deck];
+    if(self)
+    {
+        self.numOfHints = 5;
+    }
+    return self;
+}
 
 -(void)flipCardAtIndex:(NSUInteger) index
 {
@@ -87,7 +99,8 @@
                 SetCard *secondCard = self.cards[j];
                 SetCard *thirdCard = self.cards[k];
                 //match is found, store it and exit the loops
-                if([firstCard match:@[secondCard, thirdCard]])
+                if(!firstCard.isUnplayable && !secondCard.isUnplayable && !thirdCard.isUnplayable &&
+                   [firstCard match:@[secondCard, thirdCard]])
                 {
                     cardsForHint = [[NSMutableArray alloc] initWithObjects:firstCard,secondCard, thirdCard, nil];
                     goto DONE;
@@ -98,6 +111,24 @@
     
 DONE:
     return cardsForHint;
+}
+
+-(BOOL)ifMatchExist
+{
+    NSMutableArray *match = [[NSMutableArray alloc] init];
+    match = [self findHint];
+    if(match)
+    {
+        return YES;
+    }
+    else
+        return NO;
+}
+
+-(void)applyMatchExistedPenalty
+{
+    if([self ifMatchExist])
+        [self receivePenalty:ADD_CARDS_WHEN_MATCH_EXISTED_PENALTY];
 }
 
 @end

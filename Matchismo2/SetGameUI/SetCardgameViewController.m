@@ -18,13 +18,15 @@
 
 @property (strong, nonatomic) CardSetGame *game;
 @property (strong, nonatomic) NSMutableArray *cardsForHint;
+@property (weak, nonatomic) IBOutlet UIButton *addThreeCardsButton;
+@property (weak, nonatomic) IBOutlet UIButton *hintButton;
 
 @end
 
 @implementation SetCardgameViewController
 
-#define ALPHA_UNPLAYABLE 0.4
-#define ALPHA_PLAYABLE 1.0
+#define ALPHA_DISABLE 0.4
+#define ALPHA_ENABLE 1.0
 
 #pragma mark - Setters
 
@@ -36,6 +38,11 @@
     {
         _game = [[CardSetGame alloc ] initWithCardCount:self.startingCardCount usingDeck:[self createDeck]];
         self.cardsForHint = nil;
+        [self.hintButton setTitle:[NSString stringWithFormat:@"Hint: %d", self.game.numOfHints] forState:UIControlStateNormal];
+        self.addThreeCardsButton.enabled = YES;
+        self.addThreeCardsButton.alpha = ALPHA_ENABLE;
+        self.hintButton.enabled = YES;
+        self.hintButton.alpha = ALPHA_ENABLE;
     }
     return _game;
 }
@@ -137,16 +144,37 @@
     self.cardsForHint = [self.game findHint];
     if(self.cardsForHint)
         [self updateUI];
+    
+    self.game.numOfHints--;
+    [self.hintButton setTitle:[NSString stringWithFormat:@"Hint: %d", self.game.numOfHints] forState:UIControlStateNormal];
+    
+    if(!self.game.numOfHints)
+    {
+        self.hintButton.enabled = NO;
+        self.hintButton.alpha = ALPHA_DISABLE;
+    }
 }
 
 - (IBAction)addThreeCards:(id)sender
 {
     if(3 <= [self.game.deck.cards count])
     {
+        if([self.game ifMatchExist])
+        {
+            [self.game applyMatchExistedPenalty];
+            self.game.numOfHints++;
+            [self showHint:nil];
+        }
+        
         for(int i = 0; i < 3; i++)
         {
             [self addCardToCardCollectionView];
         }
+    }
+    else
+    {
+        self.addThreeCardsButton.enabled = NO;
+        self.addThreeCardsButton.alpha = ALPHA_DISABLE;
     }
 }
 
