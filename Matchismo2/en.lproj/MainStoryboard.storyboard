@@ -505,18 +505,18 @@
                             <constraint firstItem="gzV-hB-exB" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" constant="38" id="QJL-QH-u1Q"/>
                             <constraint firstItem="J0r-bE-ZLd" firstAttribute="trailing" secondItem="FBq-a7-9Bm" secondAttribute="trailing" type="default" id="QdO-we-RIy"/>
                             <constraint firstItem="0Mc-w6-fpL" firstAttribute="baseline" secondItem="gzV-hB-exB" secondAttribute="baseline" type="default" id="SCc-4h-dcD"/>
-                            <constraint firstItem="M9G-Pq-dNN" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" constant="10" id="UnR-BW-YI0"/>
-                            <constraint firstItem="cxx-Ia-HLR" firstAttribute="centerX" secondItem="J0r-bE-ZLd" secondAttribute="centerX" type="default" id="VRe-kz-ih2"/>
+                            <constraint firstItem="OAa-m8-gB5" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" constant="10" id="TnK-WF-VLb"/>
                             <constraint firstItem="Em6-V4-YyD" firstAttribute="bottom" secondItem="Rlq-5s-d3T" secondAttribute="bottom" type="default" id="Y80-wH-1s9"/>
                             <constraint firstItem="J0r-bE-ZLd" firstAttribute="top" secondItem="FBq-a7-9Bm" secondAttribute="top" type="default" id="YG1-aO-6eg"/>
-                            <constraint firstItem="Em6-V4-YyD" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" constant="59" id="aJx-fl-A7p"/>
                             <constraint firstItem="Rlq-5s-d3T" firstAttribute="baseline" secondItem="cxx-Ia-HLR" secondAttribute="baseline" type="default" id="btm-Hm-fke"/>
                             <constraint firstAttribute="bottom" secondItem="M9G-Pq-dNN" secondAttribute="bottom" constant="27" id="bw6-Ig-zEN"/>
                             <constraint firstItem="0Mc-w6-fpL" firstAttribute="leading" secondItem="pBq-j0-aBd" secondAttribute="leading" type="default" id="dqP-3d-pc8"/>
                             <constraint firstItem="Em6-V4-YyD" firstAttribute="baseline" secondItem="OAa-m8-gB5" secondAttribute="baseline" type="default" id="f8a-hs-3f0"/>
+                            <constraint firstItem="Em6-V4-YyD" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" constant="55" id="hm7-ig-STR"/>
                             <constraint firstAttribute="trailing" secondItem="Rlq-5s-d3T" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="mhw-Ig-3qk"/>
                             <constraint firstItem="Em6-V4-YyD" firstAttribute="bottom" secondItem="OAa-m8-gB5" secondAttribute="bottom" type="default" id="mlT-Kb-2J3"/>
                             <constraint firstItem="J0r-bE-ZLd" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" type="default" id="rUQ-Z9-bea"/>
+                            <constraint firstItem="cxx-Ia-HLR" firstAttribute="leading" secondItem="FBq-a7-9Bm" secondAttribute="leading" constant="135" id="szv-8K-yG4"/>
                             <constraint firstItem="cxx-Ia-HLR" firstAttribute="top" secondItem="Rlq-5s-d3T" secondAttribute="top" type="default" id="uzC-hu-FbX"/>
                             <constraint firstItem="OAa-m8-gB5" firstAttribute="leading" secondItem="M9G-Pq-dNN" secondAttribute="leading" type="default" id="xQO-N0-aBD"/>
                             <constraint firstItem="Em6-V4-YyD" firstAttribute="baseline" secondItem="cxx-Ia-HLR" secondAttribute="baseline" type="default" id="xW0-aI-pBG"/>
@@ -625,6 +625,8 @@
         <class className="CardgameViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardgameViewController.h"/>
             <relationships>
+                <relationship kind="action" name="deal:"/>
+                <relationship kind="action" name="flipCard:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="matchedCardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="matchedLabel" candidateClass="UILabel"/>
@@ -690,6 +692,8 @@
         <class className="SetCardgameViewController" superclassName="CardgameViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetCardgameViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addThreeCards:"/>
+                <relationship kind="action" name="showHint:"/>
                 <relationship kind="outlet" name="addThreeCardsButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="hintButton" candidateClass="UIButton"/>
             </relationships>
@@ -697,6 +701,7 @@
         <class className="SettingViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
             <relationships>
+                <relationship kind="action" name="changeNumOfStartingCard:"/>
                 <relationship kind="outlet" name="numOfStartingCardLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="numOfStartingCardSlider" candidateClass="UISlider"/>
             </relationships>
@@ -709,6 +714,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
