@@ -314,6 +314,8 @@
     self.currentNumOfCards++;
     [self.game addCard];
     [self.cardCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:self.currentNumOfCards - 1 inSection:0]]];
+    
+    [self.cardCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.currentNumOfCards - 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionTop animated:YES];
 }
 
 -(void)removeUnplayableCards

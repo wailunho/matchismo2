@@ -60,9 +60,9 @@
     _selected = selected;
     [self setNeedsDisplay];
 }
--(void)setHintOn:(BOOL)hintOn
+-(void)setCheatOn:(BOOL)cheatOn
 {
-    _hintOn = hintOn;
+    _cheatOn = cheatOn;
     [self setNeedsDisplay];
 }
 
@@ -88,7 +88,7 @@
 #pragma mark - Drawing
 
 #define CORNER_RADIUS 12.0
-#define HINT_LINE_WIDTH 10
+#define CHEAT_LINE_WIDTH 10
 
 -(void)drawRect:(CGRect)rect
 {
@@ -103,9 +103,9 @@
     
     [[UIColor blackColor] setStroke];
     
-    if(self.hintOn)
+    if(self.cheatOn)
     {
-        roundedRect.lineWidth *= HINT_LINE_WIDTH;
+        roundedRect.lineWidth *= CHEAT_LINE_WIDTH;
         [[UIColor yellowColor] setStroke];
     }
     

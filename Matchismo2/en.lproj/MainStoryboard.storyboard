@@ -477,8 +477,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Em6-V4-YyD">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="Qvy-Js-Stl"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                <state key="normal" title="Hint: 0">
+                                <state key="normal" title="Cheat: 0">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -486,7 +489,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showHint:" destination="4In-6H-zVk" eventType="touchUpInside" id="nZU-P3-5I5"/>
+                                    <action selector="useCheat:" destination="4In-6H-zVk" eventType="touchUpInside" id="XXM-Tn-cOB"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -527,7 +530,7 @@
                     <connections>
                         <outlet property="addThreeCardsButton" destination="OAa-m8-gB5" id="hwN-s5-mQU"/>
                         <outlet property="cardCollectionView" destination="J0r-bE-ZLd" id="MzK-6h-u7O"/>
-                        <outlet property="hintButton" destination="Em6-V4-YyD" id="6z7-2a-5vU"/>
+                        <outlet property="cheatButton" destination="Em6-V4-YyD" id="cvs-DO-tdO"/>
                         <outlet property="matchedCardCollectionView" destination="pBq-j0-aBd" id="jhH-Rj-iZ1"/>
                         <outlet property="matchedLabel" destination="0Mc-w6-fpL" id="9vQ-z7-F3k"/>
                         <outlet property="scoreLabel" destination="cxx-Ia-HLR" id="ljI-8Q-3UH"/>
@@ -625,8 +628,6 @@
         <class className="CardgameViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardgameViewController.h"/>
             <relationships>
-                <relationship kind="action" name="deal:"/>
-                <relationship kind="action" name="flipCard:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="matchedCardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="matchedLabel" candidateClass="UILabel"/>
@@ -693,15 +694,16 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetCardgameViewController.h"/>
             <relationships>
                 <relationship kind="action" name="addThreeCards:"/>
-                <relationship kind="action" name="showHint:"/>
+                <relationship kind="action" name="useCheat:"/>
                 <relationship kind="outlet" name="addThreeCardsButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="hintButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cheatButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="SettingViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingViewController.h"/>
             <relationships>
                 <relationship kind="action" name="changeNumOfStartingCard:"/>
+                <relationship kind="action" name="resetRanking:"/>
                 <relationship kind="outlet" name="numOfStartingCardLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="numOfStartingCardSlider" candidateClass="UISlider"/>
             </relationships>
@@ -714,9 +716,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

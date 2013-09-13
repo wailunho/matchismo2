@@ -12,9 +12,9 @@ Score
 * -1 for selecting a card
 * -16 for adding three cards when a match existed
 
-Hint
+Cheat
 ----
-* 5 hints per game
-* Only pressing the hint button counts as using a hint.
+* 5 Cheats per game
+* Only pressing the cheat button counts as using a cheat.
 
 

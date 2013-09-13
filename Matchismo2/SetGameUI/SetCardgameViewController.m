@@ -17,9 +17,9 @@
 @interface SetCardgameViewController ()
 
 @property (strong, nonatomic) CardSetGame *game;
-@property (strong, nonatomic) NSMutableArray *cardsForHint;
+@property (strong, nonatomic) NSMutableArray *cardsForCheat;
 @property (weak, nonatomic) IBOutlet UIButton *addThreeCardsButton;
-@property (weak, nonatomic) IBOutlet UIButton *hintButton;
+@property (weak, nonatomic) IBOutlet UIButton *cheatButton;
 
 @end
 
@@ -37,12 +37,12 @@
     if(!_game)
     {
         _game = [[CardSetGame alloc ] initWithCardCount:self.startingCardCount usingDeck:[self createDeck]];
-        self.cardsForHint = nil;
-        [self.hintButton setTitle:[NSString stringWithFormat:@"Hint: %d", self.game.numOfHints] forState:UIControlStateNormal];
+        self.cardsForCheat = nil;
+        [self.cheatButton setTitle:[NSString stringWithFormat:@"Cheat: %d", self.game.numOfCheats] forState:UIControlStateNormal];
         self.addThreeCardsButton.enabled = YES;
         self.addThreeCardsButton.alpha = ALPHA_ENABLE;
-        self.hintButton.enabled = YES;
-        self.hintButton.alpha = ALPHA_ENABLE;
+        self.cheatButton.enabled = YES;
+        self.cheatButton.alpha = ALPHA_ENABLE;
     }
     return _game;
 }
@@ -56,10 +56,10 @@
 {
     return 3;
 }
--(NSMutableArray *)cardsForHint
+-(NSMutableArray *)cardsForCheat
 {
-    if(!_cardsForHint)_cardsForHint = [[NSMutableArray alloc] init];
-    return _cardsForHint;
+    if(!_cardsForCheat)_cardsForCheat = [[NSMutableArray alloc] init];
+    return _cardsForCheat;
 }
 
 -(BOOL)removeCardsFromView
@@ -91,11 +91,11 @@
             setCardView.color = setCard.color;
             setCardView.shading = setCard.shading;
             setCardView.selected = setCard.faceUp;
-            setCardView.hintOn = NO;
-            for(SetCard* otherSetCard in self.cardsForHint)
+            setCardView.cheatOn = NO;
+            for(SetCard* otherSetCard in self.cardsForCheat)
             {
                 if([setCard.contents isEqualToString:otherSetCard.contents])
-                    setCardView.hintOn = YES;
+                    setCardView.cheatOn = YES;
             }
         }
     }
@@ -110,7 +110,7 @@
             setCardView.color = setCard.color;
             setCardView.shading = setCard.shading;
             setCardView.selected = NO;
-            setCardView.hintOn = NO;
+            setCardView.cheatOn = NO;
         }
     }
     else if([cell isKindOfClass:[MatchedSetCardCollectionViewCell class]])
@@ -124,7 +124,7 @@
             setCardView.color = setCard.color;
             setCardView.shading = setCard.shading;
             setCardView.selected = NO;
-            setCardView.hintOn = NO;
+            setCardView.cheatOn = NO;
         }
     }
 }
@@ -139,19 +139,19 @@
     }
 }
 
-- (IBAction)showHint:(id)sender
+- (IBAction)useCheat:(id)sender
 {
-    self.cardsForHint = [self.game findHint];
-    if(self.cardsForHint)
+    self.cardsForCheat = [self.game findMatch];
+    if(self.cardsForCheat)
         [self updateUI];
     
-    self.game.numOfHints--;
-    [self.hintButton setTitle:[NSString stringWithFormat:@"Hint: %d", self.game.numOfHints] forState:UIControlStateNormal];
+    self.game.numOfCheats--;
+    [self.cheatButton setTitle:[NSString stringWithFormat:@"Cheat: %d", self.game.numOfCheats] forState:UIControlStateNormal];
     
-    if(!self.game.numOfHints)
+    if(!self.game.numOfCheats)
     {
-        self.hintButton.enabled = NO;
-        self.hintButton.alpha = ALPHA_DISABLE;
+        self.cheatButton.enabled = NO;
+        self.cheatButton.alpha = ALPHA_DISABLE;
     }
 }
 
@@ -162,14 +162,15 @@
         if([self.game ifMatchExist])
         {
             [self.game applyMatchExistedPenalty];
-            self.game.numOfHints++;
-            [self showHint:nil];
+            self.game.numOfCheats++;
+            [self useCheat:nil];
         }
         
         for(int i = 0; i < 3; i++)
         {
             [self addCardToCardCollectionView];
         }
+        
     }
     else
     {

@@ -10,10 +10,10 @@
 
 @interface CardSetGame : CardGame
 
-@property (nonatomic) int numOfHints;
+@property (nonatomic) int numOfCheats;
 
 -(id)initWithCardCount:(NSUInteger)count usingDeck:(Deck *)deck;
--(NSMutableArray*)findHint;
+-(NSMutableArray*)findMatch;
 -(BOOL)ifMatchExist;
 -(void)applyMatchExistedPenalty;
 

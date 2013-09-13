@@ -14,7 +14,7 @@
 @property(nonatomic) int numOfSymbol;
 @property(strong, nonatomic) NSString *color;
 @property(strong, nonatomic) NSString *shading;
-@property(nonatomic) BOOL hintOn;
+@property(nonatomic) BOOL cheatOn;
 @property(nonatomic) BOOL selected;
 
 @end

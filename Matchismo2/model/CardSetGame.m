@@ -27,7 +27,7 @@
     self = [super initWithCardCount:count usingDeck:deck];
     if(self)
     {
-        self.numOfHints = 5;
+        self.numOfCheats = 5;
     }
     return self;
 }
@@ -85,7 +85,7 @@
     }
 }
 
--(NSMutableArray*)findHint
+-(NSMutableArray*)findMatch
 {
     //loop through all the combination and return the first matched one.
     NSMutableArray *cardsForHint = nil;
@@ -116,7 +116,7 @@ DONE:
 -(BOOL)ifMatchExist
 {
     NSMutableArray *match = [[NSMutableArray alloc] init];
-    match = [self findHint];
+    match = [self findMatch];
     if(match)
     {
         return YES;
